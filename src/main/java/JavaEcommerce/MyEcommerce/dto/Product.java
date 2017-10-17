@@ -43,10 +43,10 @@ public class Product {
 	@Min(value = 1, message = "Product price cannot be less than 1!")
 	private double unitPrice;
 
-	@Min(value = 1, message = "Product quantity must be greater than 0!")
+	//@Min(value = 1, message = "Product quantity must be greater than 0!")
 	private int quantity;
 
-	@JsonIgnore
+	//@JsonIgnore
 	@Column(name = "is_active")
 	private boolean active;
 

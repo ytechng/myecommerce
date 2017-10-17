@@ -24,7 +24,7 @@
 		
 			<div class="card">
 				<div class="card-header">
-					<h4><span class="fa fa-plus"></span> Add New Product</h4>
+					<h4>Product Management</h4>
 				 </div>
 				 
 				 <div class="card-block">
@@ -114,8 +114,8 @@
 				 			<!-- Add Product button -->
 				 			<div class="form-group">				 				
 				 				<div class="col-md-6 mx-auto">
-				 					<button type="submit" name="submit" class="btn btn-info btn-block">
-				 						<span class="fa fa-plus-circle"></span> Add Product
+				 					<button type="submit" name="submit" class="${btnClass} btn-block">
+				 						<span class="${faClass}"></span> ${btnTitle}
 				 					</button>
 				 				</div>
 				 			</div>
@@ -147,6 +147,7 @@
 							<th>Id</th>
 							<th>&#160;</th>
 							<th>Name</th>
+							<th>Brand</th>
 							<th>Quantity</th>
 							<th>Unit Price</th>
 							<th>Active</th>
@@ -154,53 +155,14 @@
 						</tr>
 					</thead>
 					
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td><img alt="Sony Xperia Z" src="${contextRoot}/images/products/PRDWHT123BDQ.jpg" class="dataTableImg"></td>
-							<td>Xperia Z5</td>
-							<td>10</td>
-							<td>160000</td>
-							<td>
-								<!-- Rounded toggle switch -->
-								<label class="switch">
-								  	<input type="checkbox" checked="checked" value="1" />
-								  	<span class="slider"></span>
-								</label>
-							</td>
-							<td>
-								<a href="${contextRoot}/manage/4/product" class="btn btn-warning">
-									<span class="fa fa-pencil"></span>
-								</a>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>1</td>
-							<td><img alt="Sony Xperia Z" src="${contextRoot}/images/products/PRDWHT123BDQ.jpg"></td>
-							<td>Xperia Z5</td>
-							<td>10</td>
-							<td>160000</td>
-							<td>
-								<!-- toggle switch -->
-								<label class="switch">
-									<input type="checkbox" value="4" />
-									<div class="slider"></div>
-								</label>
-							</td>
-							<td>
-								<a href="${contextRoot}/manage/4/product" class="btn btn-warning">
-									<span class="fa fa-pencil"></span>
-								</a>
-							</td>
-						</tr>
-					</tbody>
+					<!-- tbody will get data from jQuery -->
 					
 					<tfoot>
 						<tr>
 							<th>Id</th>
 							<th>&#160;</th>
 							<th>Name</th>
+							<th>Brand</th>
 							<th>Quantity</th>
 							<th>Unit Price</th>
 							<th>Active</th>

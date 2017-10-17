@@ -100,6 +100,9 @@
 	    <!-- Datatables Bootstrap -->
 	    <script src="${js}/dataTables.bootstrap4.js"></script>
 	    
+	    <!-- BootBox JS -->
+	    <script src="${js}/bootbox.min.js"></script>
+	    
 	    <!-- Custom Javascript -->
 	    <script src="${js}/app.js"></script>
     

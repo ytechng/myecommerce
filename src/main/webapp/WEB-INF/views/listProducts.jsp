@@ -55,6 +55,9 @@
 								<th></th>
 							</tr>
 						</thead>
+						
+						<!-- tbody will get data from jQuery -->
+						
 						<tfoot>
 							<tr>
 								<th>Image</th>

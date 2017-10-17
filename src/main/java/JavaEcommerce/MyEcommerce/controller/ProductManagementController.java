@@ -12,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import JavaEcommerce.MyEcommerce.dao.CategoryDAO;
@@ -43,6 +45,9 @@ public class ProductManagementController {
 		
 		mv.addObject("userClickManageProducts", true);
 		mv.addObject("title", "Manage Products");
+		mv.addObject("btnTitle", "Add Product");
+		mv.addObject("btnClass", "btn btn-info");
+		mv.addObject("faClass", "fa fa-plus-circle");
 		
 		Product nProduct = new Product();
 		
@@ -66,7 +71,16 @@ public class ProductManagementController {
 	public String addProduct(@Valid @ModelAttribute("product") Product mProduct, 
 			BindingResult results, Model model, HttpServletRequest request) {
 		
-		new ProductValidator().validate(mProduct, results);
+		// handle image validation for new products
+		if (mProduct.getId() == 0) {
+			new ProductValidator().validate(mProduct, results);
+			
+		} else { // there is file to be uploaded during product update
+			if (!mProduct.getFile().getOriginalFilename().equals("")) {
+				
+				new ProductValidator().validate(mProduct, results);
+			}
+		}
 		
 		// check if there are any errros
 		if (results.hasErrors()) {
@@ -79,8 +93,14 @@ public class ProductManagementController {
 		
 		logger.info(mProduct.toString());
 		
-		// create a new product record
-		productDAO.add(mProduct);
+		if (mProduct.getId() == 0) {
+			// create a new product record
+			productDAO.add(mProduct);
+		} else {
+			// update the product
+			productDAO.add(mProduct);
+		}
+		
 		
 		if (!mProduct.getFile().getOriginalFilename().equals("")) {
 			FileUploadUtility.uploadFile(request, mProduct.getFile(), mProduct.getCode());
@@ -88,6 +108,48 @@ public class ProductManagementController {
 		
 		return "redirect:/manage/products?operation=product";
 	}
+	
+	
+	@RequestMapping(value="/product/{id}/activation", method=RequestMethod.POST)
+	@ResponseBody
+	public String productActivation(@PathVariable int id) {
+		
+		// get product with the id supplied from the database
+		Product product = productDAO.get(id);
+		
+		boolean isActive = product.isActive();
+		
+		// activating and deactivating product based on id value
+		product.setActive(!product.isActive());
+		
+		// update the product
+		productDAO.update(product);
+		
+		return (isActive) ? 
+				"You have successfully deactivated the product with id "+ product.getId() : 
+				"You have successfully activated the product with id "+ product.getId();
+	}
+	
+	
+	@RequestMapping(value="/{id}/product", method=RequestMethod.GET)
+	public ModelAndView showEditProduct(@PathVariable int id) {
+		
+		ModelAndView mv = new ModelAndView("page");
+		
+		mv.addObject("userClickManageProducts", true);
+		mv.addObject("title", "Manage Products");
+		mv.addObject("btnTitle", "Update Product");
+		mv.addObject("btnClass", "btn btn-primary");
+		mv.addObject("faClass", "fa fa-edit");
+		
+		// fetch product from the database 
+		Product uProduct = productDAO.get(id);
+		
+		// set the product fetched from the databse		
+		mv.addObject("product", uProduct);
+		
+		return mv;
+	} 
 	
 	// return categories on all request mapping
 	@ModelAttribute("categories")
