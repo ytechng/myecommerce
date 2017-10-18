@@ -6,19 +6,61 @@ import JavaEcommerce.MyEcommerce.dto.Product;
 
 public interface ProductDAO {
 
-	List<Product> list(); // get all products
+	/**
+	 * Get all products
+	 * @return
+	 */
+	List<Product> list();
 	
-	Product get(int productId); // get a single product
+	/**
+	 * Get a single product based on id
+	 * @param productId
+	 * @return int
+	 */
+	Product get(int productId); 
 	
-	boolean add(Product product); // add new product
+	/**
+	 * Add a new product
+	 * @param product
+	 * @return object
+	 */
+	boolean add(Product product); 
 	
-	boolean update(Product product); // update product
+	/**
+	 * Update product based on the product id supplied
+	 * @param product
+	 * @return boolean
+	 */
+	boolean update(Product product); 
 	
-	boolean delete(Product productId); // delete product
+	/**
+	 * Delete product based on id supplied
+	 * @param productId
+	 * @return boolean
+	 */
+	boolean delete(Product productId); 
 	
-	// Business methods
+	
+	/************************ Business methods **********************/
+	
+	/**
+	 * Get all active products
+	 * @return
+	 */
 	List<Product> listActiveProducts();
+	
+	/**
+	 * Get products by their categories
+	 * @param categoryId
+	 * @return List
+	 */
 	List<Product> listActiveProductsByCategory(int categoryId);
+	
+	/**
+	 * Get latest active product 
+	 * @param count
+	 * @return List
+	 */
 	List<Product> getLastestActiveProducts(int count);
 	
 }

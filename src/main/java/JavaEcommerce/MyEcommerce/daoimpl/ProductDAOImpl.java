@@ -17,9 +17,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	/**
-	 * Get all products
-	 */
+	// get all products
 	@Override
 	public List<Product> list() {
 		try {
@@ -34,9 +32,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return null;
 	}
 
-	/**
-	 * Get a single product based on id
-	 */
+	// get a single product
 	@Override
 	public Product get(int productId) {
 		try {
@@ -50,9 +46,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return null;
 	}
 
-	/**
-	 * Add a new product
-	 */
+	// add new product
 	@Override
 	public boolean add(Product product) {
 		try {
@@ -65,9 +59,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return false;
 	}
 
-	/**
-	 * Update product by id supplied
-	 */
+	// update product
 	@Override
 	public boolean update(Product product) {
 		try {
@@ -80,9 +72,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return false;
 	}
 
-	/**
-	 * Delete product based on id supplied
-	 */
+	// delete product
 	@Override
 	public boolean delete(Product product) {
 		try {
@@ -96,9 +86,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return false;
 	}
 
-	/**
-	 * Get all active products
-	 */
+	// list of active products
 	@Override
 	public List<Product> listActiveProducts() {
 		try {
@@ -116,9 +104,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return null;
 	}
 
-	/**
-	 * Get products by their categories
-	 */
+	// list of active products by their category
 	@Override
 	public List<Product> listActiveProductsByCategory(int categoryId) {
 		try {
@@ -138,9 +124,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return null;
 	}
 
-	/**
-	 * Get latest active product 
-	 */
+	// list of latest active products
 	@Override
 	public List<Product> getLastestActiveProducts(int count) {
 		try {

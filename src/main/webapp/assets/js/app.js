@@ -172,8 +172,8 @@ $(function() {
 		
 		$adminProductsTable.DataTable( {
 			
-			lengthMenu: [[10, 30, 50, -1], ['10 Records', '30 Records', '50 Records', 'All Records']],
-			pageLength: 30,
+			lengthMenu: [[5, 10, 20, 50, -1], ['5 Records','10 Records', '15 Records', '20 Records', 'All Records']],
+			pageLength: 10,
 			//data: products //user for dataset
 			ajax: {
 				url: jsonUrl,
@@ -291,5 +291,45 @@ $(function() {
 		});
 	}
 	//-----------------------------------
+	
+	//------Validation for category form ----//
+	
+	var $categoryForm = $('#categoryForm');
+	
+	if ($categoryForm.length) {
+		
+		$categoryForm.validate({
+			rules: {
+				name: {
+					required: true,
+					minlength: 2
+				},
+				
+				description: {
+					required: true
+				}	
+			},
+			
+			messages: {
+				name: {
+					required: 'Please enter the category name!',
+					minLength: 'Category name should not be less than 2 characters!'
+				},
+				
+				description: {
+					required: 'Please enter category description!'
+				}
+			},
+			
+			errorElement: 'em',
+			errorPlacement: function(error, element) {
+				// add the class of help-block
+				error.addClass('help-block');
+				
+				error.insertAfter(element);
+			}
+		});
+	}
+	//------ end category form validation --//
 	
 })

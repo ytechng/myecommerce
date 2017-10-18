@@ -1,3 +1,49 @@
+CREATE TABLE users (
+	id IDENTITY,
+	first_name VARCHAR(50),
+	last_name VARCHAR(50),
+	email VARCHAR(100),
+	phone_no VARCHAR(50),
+	role VARCHAR(100),
+	password VARCHAR(100),
+	enabled BOOLEAN,
+	
+	CONSTRAINT pk_user_id PRIMARY KEY (id)
+);
+
+INSERT INTO users (first_name, last_name, email, phone_no, role, password, enabled) 
+VALUES ('Admin', 'Administrator', 'admin@gmail.com', '08020908829', 'admin', 'test1234', true);
+
+
+CREATE TABLE addresses (
+	id IDENTITY,
+	user_id INT,
+	address_1 VARCHAR(100),
+	address_2 VARCHAR(100),
+	city VARCHAR(50),
+	state VARCHAR(50),
+	country VARCHAR(50),
+	postal_code VARCHAR(10),
+	shipping BOOLEAN,
+	billing BOOLEAN,
+	
+	CONSTRAINT pk_address_id PRIMARY KEY (id)
+);
+
+INSERT INTO addresses (user_id, address_1, address_2, city, state, country, postal_code, shipping, billing) 
+VALUES (1, 'Badore Ajah', 'Langbasa Eti-Osa Ajah', 'Lekki', 'Lagos', 'Nigeria', '23401', true, true);
+
+
+CREATE TABLE carts (
+	id IDENTITY,
+	user_id INT,
+	grand_total DECIMAL(10,2),
+	cart_lines INT,
+	
+	CONSTRAINT pk_cart_id PRIMARY KEY (id)
+);
+
+
 CREATE TABLE categories (
 	id IDENTITY,
 	name VARCHAR(50),

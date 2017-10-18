@@ -31,7 +31,7 @@
 				 	<!-- Form elements here -->
 				 	<div class="card-text">
 				 		<html:form class="form-horizontal" modelAttribute="product" 
-				 			action="${contextRoot}/manage/products" method="POST" 
+				 			action="${contextRoot}/manage/products " method="POST" 
 				 			enctype="multipart/form-data">
 				 			<!-- Category deopdown -->
 				 			<div class="form-group row">
@@ -39,12 +39,20 @@
 				 					Category:
 				 				</label>
 				 				<div class="col-md-8">
-				 					<html:select path="categoryId" id="categoryId" class="form-control" 
-				 						items="${categories}" itemLabel="name" itemValue="id"/>
-				 					<html:errors path="categoryId" cssClass="help-block" element="em"/>
+				 					<div class="input-group">
+					 					<html:select path="categoryId" id="categoryId" class="form-control" 
+					 						items="${categories}" itemLabel="name" itemValue="id"/>
+					 					<html:errors path="categoryId" cssClass="help-block" element="em"/>
+					 					
+					 					<!-- Button to call add category modal -->
+					 					<c:if test="${product.id == 0}">
+					 						<span class="input-group-addon fa fa-plus" data-toggle="modal" data-target="#categoryModal" style="color: #008000;" title="Add Category"></span>
+					 					</c:if>
+					 				</div>
+				 					
 				 				</div>
 				 			</div>
-				 			
+				 							 			
 				 			<!-- Product name input -->
 				 			<div class="form-group row">
 				 				<label class="col-md-4 col-form-label for="name">
@@ -175,5 +183,7 @@
 		</div>
 		
 	</div>
-	
+
+	<!-- include category modal -->
+	<%@ include file="modals/categoryModal.jsp" %>
 </div>

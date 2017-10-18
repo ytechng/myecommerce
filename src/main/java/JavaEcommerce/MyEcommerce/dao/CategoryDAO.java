@@ -6,14 +6,29 @@ import JavaEcommerce.MyEcommerce.dto.Category;
 
 public interface CategoryDAO {
 	
-	List<Category> list(); // get all categories
+	/**
+	 * Get all category
+	 */
+	List<Category> list();
 	
-	Category get(int id); // get a single category
+	/**
+	 * Get a single category based on id
+	 */
+	Category get(int id); 
 	
-	boolean add(Category category); // add new category
+	/**
+	 * Add a new category to the database table
+	 */
+	boolean add(Category category); 
 	
-	boolean update(Category category); // update category
+	/**
+	 * Update category based on id
+	 */
+	boolean update(Category category); 
 	
-	boolean delete(Category category); // delete category
+	/**
+	 * Delete category based on id
+	 */
+	boolean delete(Category category); 
 
 }

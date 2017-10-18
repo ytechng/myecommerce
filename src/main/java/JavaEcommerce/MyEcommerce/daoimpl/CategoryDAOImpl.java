@@ -18,9 +18,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	/**
-	 * Get all category
-	 */
+	// all category list
 	@Override
 	public List<Category> list() {
 
@@ -34,9 +32,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return query.getResultList();
 	}
 
-	/**
-	 * Get a single category based on id
-	 */
+	// get a single category
 	@Override
 	public Category get(int id) {
 
@@ -51,9 +47,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return null;
 	}
 
-	/**
-	 * Add a new category to the database table
-	 */
+	// add new category
 	@Override
 	public boolean add(Category category) {
 
@@ -69,9 +63,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 	}
 
-	/**
-	 * Update category based on id
-	 */
+	// update category
 	@Override
 	public boolean update(Category category) {
 
@@ -87,9 +79,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 	}
 
-	/**
-	 * Delete category based on id
-	 */
+	// delete category
 	@Override
 	public boolean delete(Category category) {
 		
