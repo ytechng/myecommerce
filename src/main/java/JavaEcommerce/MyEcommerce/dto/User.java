@@ -1,10 +1,12 @@
 package JavaEcommerce.MyEcommerce.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,9 +35,20 @@ public class User {
 	private String password;
 	private boolean enabled = true;
 	
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	private Cart cart;
+	
+
 	/**
 	 * setter and getter for the user private fields
 	 */
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 	public int getId() {
 		return id;
@@ -69,11 +82,11 @@ public class User {
 		this.email = email;
 	}
 
-	public String getContactNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setContactNumber(String contactNumber) {
+	public void setPhoneNumber(String contactNumber) {
 		this.phoneNumber = contactNumber;
 	}
 

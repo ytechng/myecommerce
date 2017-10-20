@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,8 +20,8 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "user_id")
-	private int userId;
+	@ManyToOne
+	private User user;
 	
 	@Column(name = "address_1")
 	private String firstAddress;
@@ -49,12 +50,12 @@ public class Address {
 		this.id = id;
 	}
 
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getFirstAddress() {
@@ -123,7 +124,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", userId=" + userId + ", firstAddress=" + firstAddress + ", secondAddress="
+		return "Address [id=" + id + ", userId=" + user + ", firstAddress=" + firstAddress + ", secondAddress="
 				+ secondAddress + ", city=" + city + ", state=" + state + ", country=" + country + ", postalCode="
 				+ postalCode + ", shipping=" + shipping + ", billing=" + billing + "]";
 	}

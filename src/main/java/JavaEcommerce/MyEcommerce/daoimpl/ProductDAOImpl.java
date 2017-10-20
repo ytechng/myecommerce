@@ -23,7 +23,7 @@ public class ProductDAOImpl implements ProductDAO {
 		try {
 			return sessionFactory.getCurrentSession()
 					.createQuery("FROM Product", Product.class)
-					.getResultList();
+						.getResultList();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -94,8 +94,8 @@ public class ProductDAOImpl implements ProductDAO {
 			
 			return sessionFactory.getCurrentSession()
 					.createQuery(selectActiveProduct, Product.class)
-					.setParameter("active", true)
-					.getResultList();
+						.setParameter("active", true)
+							.getResultList();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,9 +113,9 @@ public class ProductDAOImpl implements ProductDAO {
 			
 			return sessionFactory.getCurrentSession()
 					.createQuery(selectActiveProductByCategory, Product.class)
-					.setParameter("active", true)
-					.setParameter("categoryId", categoryId)
-					.getResultList();
+						.setParameter("active", true)
+							.setParameter("categoryId", categoryId)
+								.getResultList();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -133,10 +133,10 @@ public class ProductDAOImpl implements ProductDAO {
 			
 			return sessionFactory.getCurrentSession()
 					.createQuery(selectLatestActiveProduct, Product.class)
-					.setParameter("active", true)
-					.setFirstResult(0)
-					.setMaxResults(count)
-					.getResultList();
+						.setParameter("active", true)
+							.setFirstResult(0)
+								.setMaxResults(count)
+									.getResultList();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

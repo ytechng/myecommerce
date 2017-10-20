@@ -32,8 +32,8 @@
 				 	<div class="card-text">
 				 		<html:form class="form-horizontal" modelAttribute="product" 
 				 			action="${contextRoot}/manage/products " method="POST" 
-				 			enctype="multipart/form-data">
-				 			<!-- Category deopdown -->
+				 			id="productForm" enctype="multipart/form-data">
+				 			<!-- Category dropdown -->
 				 			<div class="form-group row">
 				 				<label class="col-md-4 col-form-label" for="categoryId">
 				 					Category:

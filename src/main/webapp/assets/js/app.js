@@ -332,4 +332,82 @@ $(function() {
 	}
 	//------ end category form validation --//
 	
+	
+//------Validation for product form ----//
+	
+	var $productForm = $('#productForm');
+	
+	if ($productForm.length) {
+		
+		$productForm.validate({
+			rules: {
+				name: {
+					required: true,
+					minlength: 2
+				},
+				
+				brand: {
+					required: true,
+					minlength: 2
+				},
+				
+				description: {
+					required: true,
+				},
+				
+				unitPrice: {
+					required: true
+				},
+				
+				quantity: {
+					required: true,
+					number: true
+				},
+				
+				file: {
+					require: true
+				}
+			},
+			
+			messages: {
+				name: {
+					required: 'Please enter the product name!',
+					minlength: 'Product name should not be less than 2 characters!'
+				},
+				
+				brand: {
+					required: 'Please enter product description!',
+					minlength: 'Product brand should not be less than 2 characters!'
+				},
+				
+				description: {
+					required: 'Please enter product description!'
+				},
+				
+				unitPrice: {
+					required: 'Please enter the product unit price!'
+				},
+				
+				quantity: {
+					required: 'Please enter quantity of the product!',
+					number: 'Quantity can only be a number!'
+				},
+				
+				file: {
+					required: 'Please select an image file to upload!'
+				}
+				
+			},
+			
+			errorElement: 'em',
+			errorPlacement: function(error, element) {
+				// add the class of help-block
+				error.addClass('help-block');
+				
+				error.insertAfter(element);
+			}
+		});
+	}
+	//------ end product form validation --//
+	
 })

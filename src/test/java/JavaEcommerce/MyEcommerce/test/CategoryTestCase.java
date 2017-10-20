@@ -75,7 +75,9 @@ public class CategoryTestCase {
 				categoryDAO.list().size());
 	}*/
 	
-	@Test
+	
+	
+	/*@Test
 	public void testCategoryCRUD() {
 		// Adding the first test category
 		category = new Category();
@@ -119,6 +121,6 @@ public class CategoryTestCase {
 		assertEquals("Successfully fetched records from category table", 1,
 				categoryDAO.list().size());
 		
-	}
+	}*/
 
 }
