@@ -6,10 +6,7 @@
 		<div class="col-md-6 col-lg-6 mx-auto">
 			<div class="card card-body">
 				<h3 class="text-center mb-4">Billing Details</h3>
-				<div class="alert alert-danger">
-					<a class="close" data-dismiss="alert" href="#">×</a>Password is too
-					short.
-				</div>
+				
 				<html:form method="POST" id="frmBilling" modelAttribute="billing">
 					<fieldset>
 						<div class="form-group">

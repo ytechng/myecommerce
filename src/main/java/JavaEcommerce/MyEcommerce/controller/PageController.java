@@ -57,17 +57,9 @@ public class PageController {
 		return mv;
 	}
 	
-	/* having similer mapping to the flow id */
-	@RequestMapping(value="/register")
-	public ModelAndView register() {
-		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title", "Sign Up");
-		return mv;
-	}
-	
 	
 	/**
-	 * Methodto load all products
+	 * Method to load all products
 	 * @return mv
 	 */
 	@RequestMapping(value={"/show/all/products"})
@@ -132,6 +124,27 @@ public class PageController {
 		mv.addObject("product", product);
 		mv.addObject("userClickShowProduct", true);
 		
+		return mv;
+	}
+	
+	
+	/* having similer mapping to the flow id */
+	@RequestMapping(value="/register")
+	public ModelAndView register() {
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Sign Up");
+		return mv;
+	}
+		
+	/* Login */
+	@RequestMapping(value="/login")
+	public ModelAndView login(@RequestParam(name="error", required = false) String error) {
+		ModelAndView mv = new ModelAndView("login");
+		
+		if (error != null) {
+			mv.addObject("errorMsg", "Invalid Username and Password");
+		}
+		mv.addObject("title", "Login");
 		return mv;
 	}
 	
