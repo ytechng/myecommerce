@@ -57,6 +57,14 @@ public class PageController {
 		return mv;
 	}
 	
+	/* having similer mapping to the flow id */
+	@RequestMapping(value="/register")
+	public ModelAndView register() {
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Sign Up");
+		return mv;
+	}
+	
 	
 	/**
 	 * Methodto load all products

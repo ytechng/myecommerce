@@ -206,7 +206,7 @@ public class UserTestCase {
 		
 		user = userDAO.getUserByEmail(email);
 		
-		assertEquals("Failed to fetch the list addresses", 3, 
+		assertEquals("Failed to fetch the list addresses", 2, 
 				userDAO.listShippingAddresses(user.getId()).size());
 		
 		assertEquals("Failed to fetch the billing address", "Lagos", 

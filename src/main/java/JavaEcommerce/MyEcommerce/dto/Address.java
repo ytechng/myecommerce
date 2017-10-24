@@ -1,5 +1,7 @@
 package JavaEcommerce.MyEcommerce.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,9 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name = "addresses")
-public class Address {
+public class Address implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * private fields for user address
@@ -22,18 +31,26 @@ public class Address {
 	
 	@ManyToOne
 	private User user;
-	
+
 	@Column(name = "address_1")
+	@NotBlank(message = "Please enter address line 1!")
 	private String firstAddress;
 	
 	@Column(name = "address_2")
+	@NotBlank(message = "Please enter address line 2!")
 	private String secondAddress;
 	
+	@NotBlank(message = "Please enter city name!")
 	private String city;
-	private String state;
-	private String country;
 	
+	@NotBlank(message = "Please enter state name!")
+	private String state;
+	
+	@NotBlank(message = "Please enter country name!")
+	private String country;
+
 	@Column(name = "postal_code")
+	@NotBlank(message = "Please enter postal code!")
 	private String postalCode;
 	
 	private boolean shipping;
