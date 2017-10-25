@@ -5,14 +5,21 @@ CREATE TABLE users (
 	email VARCHAR(100),
 	phone_no VARCHAR(50),
 	role VARCHAR(100),
-	password VARCHAR(100),
+	password VARCHAR(60),
 	enabled BOOLEAN,
 	
 	CONSTRAINT pk_user_id PRIMARY KEY (id)
 );
 
 INSERT INTO users (first_name, last_name, email, phone_no, role, password, enabled) 
-VALUES ('Admin', 'Administrator', 'admin@gmail.com', '08020908829', 'admin', 'test1234', true);
+VALUES ('Admin', 'Administrator', 'admin@gmail.com', '08020908829', 'admin', '$2y$10$PJ6p4zf94Civ.mRuXTwiMeOaGYdNpzQNhtuR1T7GMKe5foVIhwLM6', true);
+
+INSERT INTO users (first_name, last_name, email, phone_no, role, password, enabled) 
+VALUES ('Merchant', 'Seller', 'merchant@gmail.com', '08012345678', 'merchant', '$2y$10$IY8wkK3gnk0.8cvjWp/0sOmoibvVWsNuvyrgewGIci1NpSi2gumbm', true);
+
+INSERT INTO users (first_name, last_name, email, phone_no, role, password, enabled) 
+VALUES ('Customer', 'User', 'user@gmail.com', '08089898171', 'user', '$2y$10$jdZGjh0aA12XEYcsUg4Xt.qQrxNk.6LJ9h5X4HvVKsV8p568.CF1K', true);
+
 
 
 CREATE TABLE addresses (

@@ -43,12 +43,24 @@ $(function() {
 	                	['10', 'Product Title11']
 	               ];*/
 	
+	// to tackle the csrf token
+	var token = $('meta[name="_csrf"]').attr('content');
+	var header = $('meta[name="_csrf_header"]').attr('content');
+	
+	if(token.length > 0 && header.length > 0) {
+		
+		// set the token header for the ajax request
+		$(document).ajaxSend(function(e, xhr, options) {
+			xhr.setRequestHeader(header, token);
+		});
+	}
+	
 	//----------------------------------------
-	// data table for users
+	// code for jQuery dataTable
 	//----------------------------------------
 	var $table = $('#productListTable'); 
 	
-	// execute the code below ony if the table exist
+	// execute the code below only if the table exist
 	if($table.length) {
 		
 		var jsonUrl = '';
