@@ -112,3 +112,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.table-responsive {
+	overflow-x: inherit;
+}

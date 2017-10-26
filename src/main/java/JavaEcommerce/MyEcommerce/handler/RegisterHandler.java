@@ -90,7 +90,7 @@ public class RegisterHandler {
 		// then save the user
 		userDAO.addUser(user);
 		
-		// get the address 
+		// get user billing address 
 		Address billing = model.getBilling();
 		billing.setUser(user);
 		billing.setBilling(true);

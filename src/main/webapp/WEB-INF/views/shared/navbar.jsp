@@ -1,3 +1,5 @@
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	<div class="container">
 		<a class="navbar-brand" href="${contextRoot}/home">My Ecommerce</a>
@@ -17,33 +19,52 @@
 					href="${contextRoot}/show/all/products">Product Lists</a></li>
 				<li class="nav-item" id="contact"><a class="nav-link"
 					href="${contextRoot}/contact">Contact</a></li>
-				<li class="nav-item" id="manageProducts"><a class="nav-link"
-					href="${contextRoot}/manage/products">Manage Products</a></li> 
-				<li class="nav-item" id="register"><a class="nav-link"
-					href="${contextRoot}/register">Sign Up</a></li>
-				<li class="nav-item" id="login"><a class="nav-link"
-					href="${contextRoot}/login">Login</a></li>
-				<li class="dropdown">
-					<a href="javascript:void(0)" class="btn btn-default 
-						dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-						Full Name
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="${contextRoot}/cart">
-								<span class="fa fa-shopping-cart"></span>
-								<span class="badge">0</span>
-								- &#8377; 0.0
-							</a>
-						</li>
-						<li class="divider" role="separator"></li>
-						<li>
-							<a href="${contextRoot}/logout">Logout</a>
-						</li>
-					</ul>
-				</li>
+				
+				<!-- Display to Admin Users -->
+				<security:authorize access="hasAuthority('admin')">
+					<li class="nav-item" id="manageProducts"><a class="nav-link"
+						href="${contextRoot}/manage/products">Manage Products</a></li> 
+				</security:authorize>
+				
+				<!-- Menu to display to anonymous users -->
+				<security:authorize access="isAnonymous()">
+					<li class="nav-item" id="register"><a class="nav-link"
+						href="${contextRoot}/register">Sign Up</a></li>
+					<li class="nav-item" id="login"><a class="nav-link"
+						href="${contextRoot}/login">Login</a></li>
+				</security:authorize>
+				
+				<!-- Display to logged in users -->
+				<security:authorize access="isAuthenticated()">
+					<li>
+						<div class="btn-group">
+						  <button type="button" class="btn btn-info dropdown-toggle" 
+						  	data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    ${userModel.fullName}
+						  </button>
+						  <div class="dropdown-menu">
+						  	<security:authorize access="hasAuthority('user')">
+							  	<a class="dropdown-item" href="${contextRoot}/cart">
+									<span class="fa fa-shopping-cart"></span>
+									<span class="badge badge-pill badge-danger">${userModel.cart.cartLines}</span>
+									- &#x20A6; ${userModel.cart.grandTotal}
+								</a>
+								
+							    <div class="dropdown-divider"></div>
+							</security:authorize>
+						    
+						    <a class="dropdown-item" href="${contextRoot}/account-logout">
+						    	<span class="fa fa-sign-out" style="color:red;"></span> LogOut
+						    </a>
+						  </div>
+						</div>
+					</li>
+				</security:authorize>
 			</ul>
 		</div>
 	</div>
 </nav>
+
+<script>
+	window.userRole = '${userModel.role}';
+</script>

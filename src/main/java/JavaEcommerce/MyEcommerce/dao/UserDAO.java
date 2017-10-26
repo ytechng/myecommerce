@@ -22,12 +22,6 @@ public interface UserDAO {
 	 */
 	boolean addAddress(Address address);
 	
-	/**
-	 * Update Cart
-	 * @param cart
-	 * @return boolean
-	 */
-	boolean updateCart(Cart cart);
 	
 	/**
 	 * Get User By Email

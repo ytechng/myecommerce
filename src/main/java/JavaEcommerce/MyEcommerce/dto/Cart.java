@@ -32,10 +32,10 @@ public class Cart implements Serializable {
 	private User user;
 	
 	@Column(name = "grand_total")
-	private double grandTotal;
+	private double grandTotal = 0.0;
 	
 	@Column(name = "cart_lines")
-	private int cartLines;
+	private int cartLines = 0;
 
 	public int getId() {
 		return id;

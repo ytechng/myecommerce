@@ -1,3 +1,5 @@
+-----------	Create Users Table ------------
+
 CREATE TABLE users (
 	id IDENTITY,
 	first_name VARCHAR(50),
@@ -11,6 +13,8 @@ CREATE TABLE users (
 	CONSTRAINT pk_user_id PRIMARY KEY (id)
 );
 
+-----------	Insert Into Users Table ------------
+
 INSERT INTO users (first_name, last_name, email, phone_no, role, password, enabled) 
 VALUES ('Admin', 'Administrator', 'admin@gmail.com', '08020908829', 'admin', '$2y$10$PJ6p4zf94Civ.mRuXTwiMeOaGYdNpzQNhtuR1T7GMKe5foVIhwLM6', true);
 
@@ -21,6 +25,7 @@ INSERT INTO users (first_name, last_name, email, phone_no, role, password, enabl
 VALUES ('Customer', 'User', 'user@gmail.com', '08089898171', 'user', '$2y$10$jdZGjh0aA12XEYcsUg4Xt.qQrxNk.6LJ9h5X4HvVKsV8p568.CF1K', true);
 
 
+-----------	Create Addresses Table ------------
 
 CREATE TABLE addresses (
 	id IDENTITY,
@@ -37,20 +42,13 @@ CREATE TABLE addresses (
 	CONSTRAINT pk_address_id PRIMARY KEY (id)
 );
 
+
+-----------	Insert Into Addresses Table ------------
 INSERT INTO addresses (user_id, address_1, address_2, city, state, country, postal_code, shipping, billing) 
 VALUES (1, 'Badore Ajah', 'Langbasa Eti-Osa Ajah', 'Lekki', 'Lagos', 'Nigeria', '23401', true, true);
 
 
-CREATE TABLE carts (
-	id IDENTITY,
-	user_id INT,
-	grand_total DECIMAL(10,2),
-	cart_lines INT,
-	
-	CONSTRAINT pk_cart_id PRIMARY KEY (id)
-);
-
-
+-----------	Create Categories Table ------------
 CREATE TABLE categories (
 	id IDENTITY,
 	name VARCHAR(50),
@@ -60,6 +58,8 @@ CREATE TABLE categories (
 	
 	CONSTRAINT pk_category_id PRIMARY KEY (id)
 );
+
+-----------	Insert Into Categories Table ------------
 
 INSERT INTO categories (name, description, image_url, is_active) 
 VALUES ('Mobiles', 'This is a description for mobiles', 'mobile.png', true);
@@ -71,30 +71,7 @@ INSERT INTO categories (name, description, image_url, is_active)
 VALUES ('Telavision', 'This is a description for Laptops', 'tv.png', true);
 
 
-
-CREATE TABLE users (
-	id IDENTITY,
-	first_name VARCHAR(50),
-	last_name VARCHAR(50),
-	role VARCHAR(50),
-	enabled BOOLEAN,
-	email VARCHAR(50),
-	password VARCHAR(100),
-	phone_no VARCHAR(13),
-	
-	CONSTRAINT pk_user_id PRIMARY KEY (id)
-);
-
-INSERT INTO users (first_name, last_name, role, enabled, email, password, phone_no) 
-VALUES ('Opeyemi', 'Ajayi', 'admin', true, 'ytechng@gmail.com', 'test1234', '2348020908829');
-
-INSERT INTO users (first_name, last_name, role, enabled, email, password, phone_no)
-VALUES ('Test', 'Merchant', 'merchant', true, 'test@gmail.com', 'test1234', '2347062980332');
-
-INSERT INTO users (first_name, last_name, role, enabled, email, password, phone_no)
-VALUES ('Merchant', 'Seller', 'merchant', true, 'merchant@gmail.com', 'test1234', '2348076867680');
-
-
+-----------	Create Products Table ------------
 
 CREATE TABLE products (
 	id IDENTITY,
@@ -114,6 +91,8 @@ CREATE TABLE products (
 	CONSTRAINT fk_product_category_id FOREIGN KEY (category_id) REFERENCES categories (id),
 	CONSTRAINT fk_product_merchant_id FOREIGN KEY (merchant_id) REFERENCES users (id)
 );
+
+-----------	Insert Into Products Table ------------
 
 INSERT INTO products (code, name, brand, description, price, quantity, is_active, category_id, merchant_id) 
 VALUES ('PRDWHT123BDQ', 'Xperia Z5', 'Sony', 'This is a water and scratch resistance smartphone', 160000, 10, true, 1, 2);
@@ -135,3 +114,32 @@ VALUES ('PRDWHT123LPA', 'Samsung LCE Tv', 'Samsung', 'This is a good lcd televis
 
 INSERT INTO products (code, name, brand, description, price, quantity, is_active, category_id, merchant_id)
 VALUES ('PRDWHT123BDQ', 'LG LED Tv', 'LG', 'This is good led television from LG', 60000, 10, true, 3, 2);
+
+
+-----------	Create Users Table ------------
+
+CREATE TABLE carts (
+	id IDENTITY,
+	user_id INT,
+	grand_total DECIMAL(10,2),
+	cart_lines INT,
+	
+	CONSTRAINT pk_cart_id PRIMARY KEY (id)
+);
+
+
+-----------	Create CartLines Table ------------
+
+CREATE TABLE cart_line (
+	id IDENTITY,
+	cart_id INT,
+	total DECIMAL(10, 2),
+	product_id INT,
+	product_count INT,
+	buying_price DECIMAL(10, 2),
+	is_available BOOLEAN,
+	
+	CONSTRAINT fk_cartline_cart_id FOREIGN KEY (cart_id) REFERENCES carts (id),
+	CONSTRAINT fk_cartline_product_id FOREIGN KEY (product_id) REFERENCES products (id),
+	CONSTRAINT pk_cartline_id PRIMARY KEY (id)
+)

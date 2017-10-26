@@ -44,31 +44,37 @@
 			
 			<div class="row">
 				<div class="col-md-12">
-					<table id="productListTable" class="table table-striped table-borderd">
-						<thead>
-							<tr>
-								<th>Image</th>
-								<th>Name</th>
-								<th>Brand</th>
-								<th>Price</th>
-								<th>Qty</th>
-								<th></th>
-							</tr>
-						</thead>
-						
-						<!-- tbody will get data from jQuery -->
-						
-						<tfoot>
-							<tr>
-								<th>Image</th>
-								<th>Name</th>
-								<th>Brand</th>
-								<th>Price</th>
-								<th>Qty</th>
-								<th></th>
-							</tr>
-						</tfoot>
-					</table>
+					
+					<div class="container-fluid">
+						<div class="table-responsive">
+											
+							<table id="productListTable" class="table table-striped table-borderd">
+								<thead>
+									<tr>
+										<th>Image</th>
+										<th>Name</th>
+										<th>Brand</th>
+										<th>Price</th>
+										<th>Qty</th>
+										<th></th>
+									</tr>
+								</thead>
+								
+								<!-- tbody will get data from jQuery -->
+								
+								<tfoot>
+									<tr>
+										<th>Image</th>
+										<th>Name</th>
+										<th>Brand</th>
+										<th>Price</th>
+										<th>Qty</th>
+										<th></th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
 				</div>
           	</div>	
           	<!-- /.row -->

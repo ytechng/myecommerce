@@ -44,26 +44,14 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean updateCart(Cart cart) {
-		try {
-			sessionFactory.getCurrentSession().update(cart);
-			return true;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-
-	@Override
 	public User getUserByEmail(String email) {
 
-		String selectQuery = "FROM User WHERE email = :email";
+		String query = "FROM User WHERE email = :email";
 		
 		try {
 			
 			return sessionFactory.getCurrentSession()
-					.createQuery(selectQuery, User.class)
+					.createQuery(query, User.class)
 						.setParameter("email", email)
 							.getSingleResult();
 			
@@ -76,12 +64,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public Address getBillingAddress(int user) {
-		String selectQuery = "FROM Address WHERE user_id = :user_id AND billing = :billing";
+		String query = "FROM Address WHERE user_id = :user_id AND billing = :billing";
 		
 		try {
 			
 			return sessionFactory.getCurrentSession()
-				.createQuery(selectQuery, Address.class)
+				.createQuery(query, Address.class)
 					.setParameter("user_id", user)
 					.setParameter("billing", true)
 						.getSingleResult();
@@ -94,12 +82,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<Address> listShippingAddresses(int user) {
-		String selectQuery = "FROM Address WHERE user_id = :user_id AND shipping = :shipping";
+		String query = "FROM Address WHERE user_id = :user_id AND shipping = :shipping";
 				
 				try {
 					
 					return sessionFactory.getCurrentSession()
-						.createQuery(selectQuery, Address.class)
+						.createQuery(query, Address.class)
 							.setParameter("user_id", user)
 							.setParameter("shipping", true)
 								.getResultList();

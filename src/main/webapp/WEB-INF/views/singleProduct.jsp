@@ -41,25 +41,34 @@
 					</h4>
 					<hr />
 
-					<c:choose>
-						<c:when test="${product.quantity < 1}">
-							<h6>
-								Qty Available: <span style="color: red;">Out of Stock!</span>
-							</h6>
-							
-							<a href="javascript:void(0)" class="btn btn-danger disabled"> 
-								<strike><span class="fa fa-shopping-cart"></span> Add to Cart</strike>
-							</a>
-						</c:when>
-						<c:otherwise>
-							<h6>Qty. In Stock: ${product.quantity}</h6>
-
-							<a href="${contextRoot}/cart/add/${product.id}/product"
-								class="btn btn-success"> <span class="fa fa-shopping-cart"></span>
-								Add to Cart
-							</a>
-						</c:otherwise>
-					</c:choose>
+					<security:authorize access="hasAuthority('user')">
+						<c:choose>
+							<c:when test="${product.quantity < 1}">
+								<h6>
+									Qty Available: <span style="color: red;">Out of Stock!</span>
+								</h6>
+								
+								<a href="javascript:void(0)" class="btn btn-danger disabled"> 
+									<strike><span class="fa fa-shopping-cart"></span> Add to Cart</strike>
+								</a>
+							</c:when>
+							<c:otherwise>
+								<h6>Qty. In Stock: ${product.quantity}</h6>
+	
+								<a href="${contextRoot}/cart/add/${product.id}/product"
+									class="btn btn-success"> <span class="fa fa-shopping-cart"></span>
+									Add to Cart
+								</a>
+							</c:otherwise>
+						</c:choose>
+					</security:authorize>
+					
+					<security:authorize access="hasAuthority('admin')">
+						<a href="${contextRoot}/manage/${product.id}/product"
+							class="btn btn-warning"><span class="fa fa-pencil"></span> 
+							Edit
+						</a>
+					</security:authorize>
 
 					<a href="${contextRoot}/show/all/products" class="btn btn-link">
 						<span class="fa fa-chevron-left"></span> Back to Products
