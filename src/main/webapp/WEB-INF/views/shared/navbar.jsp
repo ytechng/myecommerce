@@ -42,9 +42,9 @@
 						  	data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						    ${userModel.fullName}
 						  </button>
-						  <div class="dropdown-menu">
+						  <div class="dropdown-menu" id="cartDetails">
 						  	<security:authorize access="hasAuthority('user')">
-							  	<a class="dropdown-item" href="${contextRoot}/cart">
+							  	<a class="dropdown-item" href="${contextRoot}/cart/show">
 									<span class="fa fa-shopping-cart"></span>
 									<span class="badge badge-pill badge-danger">${userModel.cart.cartLines}</span>
 									- &#x20A6; ${userModel.cart.grandTotal}

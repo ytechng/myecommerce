@@ -17,13 +17,13 @@
 	<http pattern="/resources/**" security="none"/>
 	
 	<http>
-		<!-- only admin access -->
+		<!-- admin access -->
 		<intercept-url pattern="/manage/**" access="hasAuthority('admin')" />
 		
-		<!-- only registered user access -->
+		<!-- regsitered user access -->
 		<intercept-url pattern="/cart/**" access="hasAuthority('user')" />
 		
-		<!-- public access -->
+		<!-- all users access -->
 		<intercept-url pattern="/**" access="permitAll" />
 		<form-login login-page="/login" />
 		<access-denied-handler error-page="/access-denied" />

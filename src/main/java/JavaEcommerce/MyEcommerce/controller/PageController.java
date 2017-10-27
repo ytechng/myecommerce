@@ -134,7 +134,7 @@ public class PageController {
 	}
 	
 	
-	/* having similer mapping to the flow id */
+	/* having similler mapping to the flow id */
 	@RequestMapping(value="/register")
 	public ModelAndView register() {
 		ModelAndView mv = new ModelAndView("page");
@@ -164,8 +164,8 @@ public class PageController {
 	@RequestMapping(value="/access-denied")
 	public ModelAndView accessDenied() {
 		ModelAndView mv = new ModelAndView("error");
-		mv.addObject("title", "Access Denied");
-		mv.addObject("errorTitle", "403 - Access Denied");
+		mv.addObject("title", "403 - Access Denied");
+		mv.addObject("errorTitle", "Aha! - Caught You.");
 		mv.addObject("errorMessage", "You are not authorized to view this page!");
 		return mv;
 	}

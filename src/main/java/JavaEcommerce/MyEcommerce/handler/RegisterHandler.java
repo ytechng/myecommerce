@@ -3,6 +3,7 @@ package JavaEcommerce.MyEcommerce.handler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -21,12 +22,16 @@ public class RegisterHandler {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+	    return new BCryptPasswordEncoder();
+	}
+	
 	public RegisterModel init() {
 		
 		return new RegisterModel();
 		
 	}
-	
 	
 	public void addUser(RegisterModel registerModel, User user) {
 		

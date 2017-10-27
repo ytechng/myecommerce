@@ -43,4 +43,6 @@ public interface UserDAO {
 	 * @return list
 	 */
 	List<Address> listShippingAddresses(int user);
+	
+	public boolean updateCart(Cart cart);
 }

@@ -40,14 +40,14 @@ public class CategoryTestCase {
 				categoryDAO.add(category));
 	}*/
 	
-/*	@Test
+	@Test
 	public void testGetCategory() {
 		
 		category = categoryDAO.get(2);
 		
 		assertEquals("Successfully feteched a single record from category table", "Laptops", 
 				category.getName());
-	}*/
+	}
 	
 /*	@Test
 	public void testUpdateCategory() {

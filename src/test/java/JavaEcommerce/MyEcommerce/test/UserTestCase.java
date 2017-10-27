@@ -180,7 +180,7 @@ public class UserTestCase {
 	}*/
 	
 	
-	/*@Test
+	@Test
 	public void testAddAddress() {
 		
 		user = userDAO.getUserByEmail(email);
@@ -199,7 +199,7 @@ public class UserTestCase {
 		address.setUser(user);
 		
 		assertEquals("Failed to add address!", true, userDAO.addAddress(address));
-	}*/
+	}
 	
 	@Test
 	public void testGetAddresses() {

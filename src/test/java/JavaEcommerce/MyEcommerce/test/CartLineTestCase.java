@@ -15,16 +15,16 @@ import JavaEcommerce.MyEcommerce.dto.User;
 
 public class CartLineTestCase {
 
-	private static AnnotationConfigApplicationContext context = null;
+	private static AnnotationConfigApplicationContext context;
 	
-	private static CartLineDAO cartLineDAO = null;
-	private static ProductDAO productDAO = null;
-	private static UserDAO userDAO = null;
+	private static CartLineDAO cartLineDAO;
+	private static ProductDAO productDAO;
+	private static UserDAO userDAO;
 	
-	private Product product = null;
-	private User user = null;
-	private Cart cart = null;
-	private CartLine cartLine = null;
+	private Product product;
+	private User user;
+	private Cart cart;
+	private CartLine cartLine;
 	
 	private String email = "ytechng@gmail.com";
 	
@@ -36,7 +36,7 @@ public class CartLineTestCase {
 		
 		productDAO = (ProductDAO) context.getBean("productDAO");
 		userDAO = (UserDAO) context.getBean("userDAO");
-		cartLineDAO = (CartLineDAO) context.getBean("carLineDAO");
+		cartLineDAO = (CartLineDAO) context.getBean("cartLineDAO");
 	}
 	
 	
@@ -53,6 +53,7 @@ public class CartLineTestCase {
 		product = productDAO.get(1);
 		
 		// 4 - create a new cart line
+		cartLine = new CartLine();
 		cartLine.setBuyingPrice(product.getUnitPrice());
 		cartLine.setProductCount(cartLine.getProductCount() + 1);
 		cartLine.setTotal(cartLine.getProductCount() * product.getUnitPrice());

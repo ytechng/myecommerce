@@ -3,6 +3,7 @@ package JavaEcommerce.MyEcommerce.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,6 +14,7 @@ import JavaEcommerce.MyEcommerce.dto.User;
 import JavaEcommerce.MyEcommerce.model.UserModel;
 
 @ControllerAdvice
+@Scope("session")
 public class GlobalController {
 	
 	@Autowired
@@ -22,7 +24,7 @@ public class GlobalController {
 	private UserDAO userDAO;
 	
 	private UserModel userModel = null;
-
+	
 	@ModelAttribute("userModel")
 	public UserModel getUserModel() {
 		
@@ -43,7 +45,7 @@ public class GlobalController {
 				userModel.setFullName(user.getFirstName() + " " + user.getLastName());
 				
 				if (userModel.getRole().equals("user")) {
-					// set the cart only if the login user is a buye
+					// set the cart only if the login user is a buyer
 					userModel.setCart(user.getCart());
 				}
 				
