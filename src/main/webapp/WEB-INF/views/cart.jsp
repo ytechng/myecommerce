@@ -1,5 +1,15 @@
 <div class="container">
 
+	<c:if test="${not empty message}">
+		
+		<div class="${alert} alert-dismissible">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+						
+			<h3 class="text-center">${message}</h3>
+		</div> 
+		
+	</c:if>
+
 	<!-- check if cart line is not empty -->
 	<c:choose>
 		
@@ -46,22 +56,22 @@
 								<button class="btn btn-info btn-sm" type="button" name="btnRefreshCart" value="${cartLine.id}">
 									<i class="fa fa-refresh"></i>
 								</button>
-								<button class="btn btn-danger btn-sm" type="button" name="btnDeleteCart" value="${cartLine.id}">
+								<a class="btn btn-danger btn-sm" href="${contextRoot}/cart/${cartLine.id}/delete">
 									<i class="fa fa-trash-o"></i>
-								</button>
+								</a>
 							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 				<tfoot>
-					<tr class="hidden-md-up">
+					<!-- <tr class="hidden-md-up">
 						<td class="text-center">
 							<strong>Total &#x20A6; ${userModel.cart.grandTotal}</strong>
 						</td>
-					</tr>
+					</tr>  -->
 					<tr>
 						<td>
-							<a href="#" class="btn btn-warning">
+							<a href="${contextRoot}/show/all/products" class="btn btn-warning">
 								<i class="fa fa-angle-left"></i> Continue Shopping
 							</a>
 						</td>

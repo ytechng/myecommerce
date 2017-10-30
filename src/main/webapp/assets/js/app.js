@@ -495,7 +495,7 @@ $(function() {
 				bootbox.alert({
 					size: 'mdeium',
 					title: 'Error',
-					message: 'Product quantity should be minimum 1 and maximum 3!'
+					message: 'Product quantity should be minimum 1 and maximum 10!'
 				});
 				
 			} else { // update cartline product qty
