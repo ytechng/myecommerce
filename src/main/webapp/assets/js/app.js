@@ -353,7 +353,7 @@ $(function() {
 	//------ end category form validation --//
 	
 	
-//------Validation for product form ----//
+	//------Validation for product form ----//
 	
 	var $productForm = $('#productForm');
 	
@@ -469,5 +469,46 @@ $(function() {
 		});
 	}
 	//------ end category form validation --//
+	
+	
+	//-----------------------------------
+	// Handling the click event from refresh cart button
+	//-----------------------------------
+	
+	$('button[name="btnRefreshCart"]').click(function() {
+		
+		// fetch the cart line id
+		var cartLineId = $(this).attr('value');
+		var countElement = $('#count_' + cartLineId);
+		
+		var originalCount = countElement.attr('value');
+		var currentCount = countElement.val();
+		
+		// work only when the count has changed
+		if (currentCount !== originalCount) {
+			//console.log("Current count: " + currentCount);
+			
+			if (currentCount < 1 || currentCount > 10) {
+				// reverting back to the original qty value
+				// user has enter value below 1 or above 10
+				countElement.val(originalCount);
+				bootbox.alert({
+					size: 'mdeium',
+					title: 'Error',
+					message: 'Product quantity should be minimum 1 and maximum 3!'
+				});
+				
+			} else { // update cartline product qty
+				
+				var updateUrl = window.contextRoot + '/cart/' + cartLineId + '/update?count=' + currentCount;
+				
+				// forward it to the controller
+				window.location.href = updateUrl;
+				
+			}
+		}
+	});
+
+	//------- end refresh cart button event --------//
 	
 })

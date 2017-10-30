@@ -153,3 +153,12 @@ input:checked + .slider:before {
 	table#cart tfoot td .btn{display:block;}
 	
 }
+
+.carImg {
+	width: 100px;
+	height: 100px;
+}
+
+.unavailable {
+	color: red;
+}
